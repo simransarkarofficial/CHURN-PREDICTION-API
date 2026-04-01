@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This project is an end-to-end machine learning pipeline that predicts customer churn using a real-world telecom dataset. The system processes input data, performs feature engineering, and provides real-time predictions via a REST API.
+This project is an end-to-end machine learning pipeline that predicts customer churn using a real-world telecom dataset. It integrates data preprocessing, model training, and deployment through a REST API built with FastAPI.
 
 ---
 
@@ -12,17 +12,18 @@ This project is an end-to-end machine learning pipeline that predicts customer c
 * FastAPI
 * Scikit-learn
 * Pandas
+* NumPy
 * Uvicorn
 
 ---
 
 ## 🧠 Features
 
-* Real-time churn prediction API
-* Data preprocessing pipeline (encoding, scaling)
-* Model deployment using FastAPI
-* JSON-based input/output
+* End-to-end ML pipeline (data → model → API)
+* Real-time prediction using REST API
+* Data preprocessing (cleaning, encoding, scaling)
 * Feature alignment for consistent inference
+* Lightweight and deployable backend
 
 ---
 
@@ -30,25 +31,60 @@ This project is an end-to-end machine learning pipeline that predicts customer c
 
 * Algorithm: Logistic Regression
 * Accuracy: ~79%
-* Evaluation: Confusion Matrix, Precision, Recall
+* Evaluation Metrics:
+
+  * Confusion Matrix
+  * Precision, Recall, F1-score
+
+---
+
+## 📂 Project Structure
+
+```
+churn-prediction-api/
+│
+├── app.py
+├── train_model.py
+├── model.pkl
+├── scaler.pkl
+├── columns.json
+├── requirements.txt
+├── sample_input.json
+├── README.md
+└── notebooks/
+    └── churn_model_training.ipynb
+```
 
 ---
 
 ## 🚀 How to Run
 
-### 1. Install dependencies
+### 1. Clone repository
+
+```bash
+git clone https://github.com/your-username/churn-prediction-api.git
+cd churn-prediction-api
+```
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run API
+### 3. Train model (optional)
+
+```bash
+python train_model.py
+```
+
+### 4. Run API
 
 ```bash
 uvicorn app:app --reload
 ```
 
-### 3. Open API Docs
+### 5. Open API Docs
 
 ```
 http://127.0.0.1:8000/docs
@@ -56,31 +92,45 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 🧪 Sample Input
+## 🧪 API Usage
 
-Use `sample_input.json` for testing the `/predict` endpoint.
+### Endpoint: `POST /predict`
 
----
+#### Example Input
 
-## 📌 API Endpoint
+Use `sample_input.json`
 
-### POST `/predict`
+#### Example Output
 
-Returns churn prediction:
+```json
+{
+  "churn_prediction": 0
+}
+```
 
-* `1` → Customer likely to churn
 * `0` → Customer likely to stay
+* `1` → Customer likely to churn
 
 ---
 
-## 💡 Future Improvements
+## 💡 Key Learnings
 
-* Use XGBoost for better performance
-* Deploy on cloud (Render/AWS)
-* Add frontend dashboard
+* Building production-ready ML pipelines
+* Handling categorical data with one-hot encoding
+* Maintaining feature consistency between training and inference
+* Deploying ML models using FastAPI
+
+---
+
+## 🚀 Future Improvements
+
+* Improve model performance using XGBoost or Random Forest
+* Deploy API on cloud platforms (Render, AWS, GCP)
+* Add frontend dashboard (Streamlit/React)
+* Implement model monitoring and logging
 
 ---
 
 ## 👨‍💻 Author
 
-Your Name
+Simran Sarkar
